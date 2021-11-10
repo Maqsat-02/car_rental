@@ -1,53 +1,166 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Contacts</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="assets/css/contact.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Contact</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'myapp/assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap"
+      rel="stylesheet"
+   <!-- Template Main CSS File  -->
+  <link href="{% static 'myapp/assets/css/contact.css' %}" rel="stylesheet">
+
 </head>
 <body>
- <section id="contact" class="contact">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'main' %}">CRental</a></h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+            <li><a class="nav-link scrollto active" href="{% url 'main' %}">HOME</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'catalog' %}">CATALOG</a></li>
+            <li><a class="nav-link scrollto"  href="{% url 'about' %}">ABOUT</a></li>
+              <li><a class="nav-link scrollto " href="{% url 'contacts' %}">CONTACT US</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'sign' %}">SIGN IN</a></li>
+            <li><a class="nav-link scrollto" href="{% url 'registration' %}">REGISTRATION</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+
+
+
+  <main id="main">
+
+   <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
       <div class="container">
 
-        <div class="section-title text-center" >
+        <div class="section-title">
           <h2>Contact</h2>
-          <h3>Check our <span>Contact</span> Details</h3>
-          <p>Have a question or need help? Give us a call or write us below.</p>
         </div>
 
+        <div class="row">
+          <div class="col-lg-6">
+              <h3>Our Address</h3>
+              <p>Almaty, Kazakhstan</p>
+          </div>
 
-        <table class="table table-success table-striped">
-  <thead>
-    <tr>
-      <th scope="col">№</th>
-      <th scope="col">Name</th>
-      <th scope="col">Position</th>
-      <th scope="col">Phone number</th>
-      <th scope="col">Mail address</th>
-      <th scope="col">Office hours</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>{{ person.name }}</td>
-      <td>{{ person.position }} </td>
-      <td>{{ person.phone }}</td>
-      <td>{{ person.mail }}</td>
-      <td>{{ person.office_h }}</td>
-    </tr>
-    <tr>
-    <th scope="row">2</th>
-      <td>{{ person1.name }}</td>
-      <td>{{ person1.position }} </td>
-      <td>{{ person1.phone }}</td>
-      <td>{{ person1.mail }}</td>
-      <td>{{ person1.office_h }}</td>
-    </tr>
-  </tbody>
-</table>
+          <div class="col-lg-3 col-md-6">
+              <h3>Email Us</h3>
+              <p>cRental@gmail.com</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+              <h3>Call Us</h3>
+              <p>8(888)888-88-88</p>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6 ">
+            <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11627.105809385639!2d76.9097448!3d43.2351464!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2426740f56437e63!2z0JzQtdC20LTRg9C90LDRgNC-0LTQvdGL0Lkg0YPQvdC40LLQtdGA0YHQuNGC0LXRgiDQuNC90YTQvtGA0LzQsNGG0LjQvtC90L3Ri9GFINGC0LXRhdC90L7Qu9C-0LPQuNC5!5e0!3m2!1sru!2skz!4v1632902352683!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="">frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
       </div>
     </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6">
+            <p>
+             8(888) 888-88-88<br>
+             Almaty, Kazakhstan<br>
+            </p>
+        </div>
+        <div class="social-links mt-3 right">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+      </div>
+    </div>
+  </div>
+  <!--Footer--->
+  <div class="container">
+    <div class="copyright">
+      &copy; All Rights Reserved
+    </div>
+  </div>
+</footer><!-- End Footer -->
+
+<!-- Vendor JS Files -->
+<!--  <script src="assets/vendor/aos/aos.js"></script>-->
+<!--  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!--  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>-->
+<!--  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>-->
+<!--  <script src="assets/vendor/php-email-form/validate.js"></script>-->
+<!--  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>-->
+
+<!-- Template Main JS File -->
+<script src="{% static 'myapp/assets/js/main.js' %}"></script>
 </body>
+
 </html>

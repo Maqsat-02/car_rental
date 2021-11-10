@@ -6,11 +6,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home Page</title>
+  <title>Sign In</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -24,9 +26,9 @@
   <link href="{% static 'myapp/assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
   <link
       href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap"
-      rel="stylesheet">
-  <!-- Template Main CSS File --->
-  <link href="{% static 'myapp/assets/css/style.css' %}" rel="stylesheet">
+      rel="stylesheet"
+   <!-- Template Main CSS File  -->
+  <link href="{% static 'myapp/assets/css/SignIn.css' %}" rel="stylesheet">
 
 </head>
 <body>
@@ -35,94 +37,67 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="{% url 'main' %}">CRental</a></h1>
-      <nav id="navbar" class="navbar">
-        <ul>
-            <li><a class="nav-link scrollto active" href="{% url 'main' %}">HOME</a></li>
-            <li><a class="nav-link scrollto" href="{% url 'catalog' %}">CATALOG</a></li>
-            <li><a class="nav-link scrollto"  href="{% url 'about' %}">ABOUT</a></li>
-              <li><a class="nav-link scrollto " href="{% url 'contacts' %}">CONTACT US</a></li>
-            <li><a class="nav-link scrollto" href="{% url 'sign' %}">SIGN IN</a></li>
-            <li><a class="nav-link scrollto" href="{% url 'registration' %}">REGISTRATION</a></li>
-        </ul>
+        <h1 class="logo"><a href="{% url 'main' %}">CRental</a></h1>
+        <nav id="navbar" class="navbar">
+          <ul>
+              <li><a class="nav-link scrollto active" href="{% url 'main' %}">HOME</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'catalog' %}">CATALOG</a></li>
+              <li><a class="nav-link scrollto"  href="{% url 'about' %}">ABOUT</a></li>
+                <li><a class="nav-link scrollto " href="{% url 'contacts' %}">CONTACT US</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'sign' %}">SIGN IN</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'registration' %}">REGISTRATION</a></li>
+          </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
     </div>
-  </header><!-- End Header -->
+  </header>
+  
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative">
-      <h1>Trusted</h1>
-      <h1>by 5 Million</h1>
-      <h1>Customers</h1>
-      <h1>& Counting</h1>
-      <h2>Start your travel planning here!</h2>
-      <a href="catalog.html" class="btn-get-started scrollto">Our cars</a>
+  <!-- =======Sign in======== -->
+  <section class="vh-100 gradient-custom">
+  <div class="container py-8 h-100 w-200">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+        <div class="card bg-black text-white" style="border-radius: 1rem;">
+          <div class="card-body p-4 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Sign in</h2>
+              <p class="text-white-50 mb-5">Please enter your login and password!</p>
+
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Your email" />
+                <label class="form-label" for="typeEmailX" >Email</label>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Your password" />
+                <label class="form-label" for="typePasswordX">Password</label>
+              </div>
+
+              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+
+              <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign in</button>
+            </div>
+
+            <div>
+              <p class="mb-1 ">Don't have an account? <a href="{% url 'registration' %}" class="text-white-50 fw-bold">Sign Up</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-  </section><!-- End Hero -->
+  </div>
+</section>
+
 
   <main id="main">
 
-    <!-- ======= Book Now ======= -->
-    <section class="book-now">
-      <div class="container">
-        <h2>Book Now</h2> <br>
-        <form>
-          <div class="form-row">
-              <input type="text" class="form-control" placeholder="Place"><br>
-           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Day from"><br>
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Day to"><br>
-           <div class="text-center">
-              <button type="button" class="btn btn-dark"><a href="catalog.html" style="color: white;">Search</a></button>
-          </div>
-        </div>
-        </form>
-      </div>
-    </section>
-
-
-    <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
-      <div class="container">
-       <div class="why-us">
-          <strong>WHY CHOOSE US?</strong>
-       </div>
-        <div class="row">
-
-          <div class="col-lg-4" >
-            <div class="box">
-              <img src="{% static 'myapp/assets/img/icons8-steering-wheel-96.png' %}" alt="">
-              <h4>New cars</h4>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0">
-            <div class="box">
-              <img src="{% static 'myapp/assets/img/icons8-ok-500.png' %}" alt="" width="96px">
-              <h4>Great Service</h4>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mt-4 mt-lg-0" >
-            <div class="box">
-              <img src="{% static 'myapp/assets/img/icons8-home-500.png' %}" alt="" width="96px">
-              <h4>Insurance</h4>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Why Us Section -->
- </main>
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
+ <!-- ======= Footer ======= -->
+ <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -161,7 +136,6 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'myapp/assets/js/main.js' %}"></script>
-
 </body>
 
 </html>

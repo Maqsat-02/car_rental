@@ -38,8 +38,9 @@ def contacts(request):
     return render(request, 'myapp/contacts.html', context)
 
 
-def index(request):
-    return render(request, 'myapp/index.html')
+
+def main(request):
+    return render(request,"myapp/Main.html")
 
 
 def about(request):
@@ -47,10 +48,14 @@ def about(request):
     # and return HTML as response
     return render(request, "myapp/course.html")
 
-def main(request):
-    return render(request,"myapp/Main.html")
+def contacts(request):
+    return render(request, 'myapp/contacts.html')
 
-# def team(request):
-#     # render function takes argument  - request
-#     # and return HTML as response
-#     return render(request, "myapp/team.html")
+def catalog(request):
+    return render(request, 'myapp/catalog.html')
+
+def sign(request):
+    return render(request,'myapp/sign.html')
+
+def register(request):
+    return render(request,'myapp/registration.html')
