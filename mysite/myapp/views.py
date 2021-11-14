@@ -1,46 +1,62 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
 
+from django.contrib import messages
+
+from django.contrib.auth.decorators import login_required
 from django.template import Template, Context
 import datetime
 
-
 # Create your views here.
-
-def team(request):
-    now = datetime.datetime.now()
-
-    person = {'firstname': 'BARBARA', 'lastname': 'MORI'}
-    person2 = {'firstname': 'HARRY', 'lastname': 'DICKENS'}
-    person3 = {'firstname': 'SAMMIE', 'lastname': 'LOUIS'}
-    person4 = {'firstname': 'JOHN', 'lastname': 'WRIGHT'}
-    project_name = "Car Rent"
-    context = {
-        'person': person,
-        'person1': person2,
-        'person2': person3,
-        'person3': person4,
-    }
-    return render(request, 'myapp/team.html', context)
+from .forms import UserForm, CreateUserForm
 
 
-def contacts(request):
-    person = {'name': 'Amangeldi Maksat', 'position': 'Developer', 'mail': 'amangeldymaksat7@gmail.com', 'phone': '87478046016',
-              'office_h': '9:00-15-00'}
-    person2 = {'name': 'Les Nurzhan', 'position': 'Team Leader', 'mail': 'nurzhan@gmail.com', 'phone': '87478035041',
-               'office_h': '9:00-15-00'}
+def registerPage(request):
+    if request.user.is_authenticated:
+        return redirect('main')
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Account was created for ' + user)
 
-    context = {
-        'person': person,
-        'person1': person2,
+                return redirect('sign')
 
-    }
-    return render(request, 'myapp/contacts.html', context)
+        context = {'form': form}
+        return render(request, 'myapp/registration.html', context)
 
+
+def logoutUser(request):
+    logout(request)
+    return redirect('sign')
+
+
+def loginPage(request):
+    if request.user.is_authenticated:
+        return redirect('main')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('main')
+            else:
+                messages.info(request, 'Username OR password is incorrect')
+
+        context = {}
+        return render(request, 'myapp/sign.html', context)
 
 
 def main(request):
-    return render(request,"myapp/Main.html")
+    return render(request, "myapp/Main.html")
 
 
 def about(request):
@@ -48,14 +64,19 @@ def about(request):
     # and return HTML as response
     return render(request, "myapp/course.html")
 
+
 def contacts(request):
     return render(request, 'myapp/contacts.html')
 
+
+@login_required(login_url='sign')
 def catalog(request):
     return render(request, 'myapp/catalog.html')
 
-def sign(request):
-    return render(request,'myapp/sign.html')
+
+# def sign(request):
+#     userform = UserForm()
+#     return render(request,'myapp/sign.html', {"form": userform})
 
 def register(request):
-    return render(request,'myapp/registration.html')
+    return render(request, 'myapp/registration.html')
