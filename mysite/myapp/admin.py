@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Agency, Vehicle, Customer, ContactForm, Rental
+from .models import Company, Vehicle, Customer, ContactForm, Rental
 
 
-class AgencyAdmin(admin.ModelAdmin):
+class CompanyAdmin(admin.ModelAdmin):
     pass
 
 
@@ -22,7 +22,7 @@ class ContactAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Agency, AgencyAdmin)
+admin.site.register(Company, CompanyAdmin)
 admin.site.register(Vehicle, VehicleAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Rental, RentalAdmin)

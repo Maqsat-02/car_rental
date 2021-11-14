@@ -15,24 +15,45 @@ from .forms import  CreateUserForm
 # from .filters import OrderFilter
 
 def registerPage(request):
-    	if request.user.is_authenticated:
-            return redirect('main')
-	    
-        else:
-            form = CreateUserForm()
-            if request.method == 'POST':
-                form = CreateUserForm(request.POST)
-                if form.is_valid():
-                    form.save()
-                    customer = form.cleaned_data.get('fname')
-                    messages.success(request, 'Account was created for ' + customer)
-                    return redirect('sign')
+    if request.user.is_authenticated:
+        return redirect('main')
+	
+    else:
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                customer = form.cleaned_data.get('username')
+                messages.success(request, 'Account was created for ' + customer)
+                return redirect('sign')
 			
 
-        context = {'form':form}
-        return render (request, 'myapp/registration.html', context)
+    context = {'form':form}
+    return render (request, 'myapp/registration.html', context)
 
+def loginPage(request):
+	if request.user.is_authenticated:
+		return redirect('main')
+	else:
+		if request.method == 'POST':
+			username = request.POST.get('username')
+			password =request.POST.get('password')
 
+			user = authenticate(request, username=username, password=password)
+
+			if user is not None:
+				login(request, user)
+				return redirect('main')
+			else:
+				messages.info(request, 'Username OR password is incorrect')
+
+		context = {}
+		return render(request, 'myapp/sign.html', context)
+
+def logoutUser(request):
+	logout(request)
+	return redirect('sign')
 
 def main(request):
     return render(request,"myapp/Main.html")
@@ -46,11 +67,7 @@ def about(request):
 def contacts(request):
     return render(request, 'myapp/contacts.html')
 
+
+@login_required(login_url='login')
 def catalog(request):
     return render(request, 'myapp/catalog.html')
-
-def sign(request):
-    return render(request,'myapp/sign.html')
-
-def register(request):
-    return render(request,'myapp/registration.html')
