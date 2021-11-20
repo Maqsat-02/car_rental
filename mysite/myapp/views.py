@@ -1,13 +1,20 @@
+from typing import Reversible
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
+
+from django.urls import reverse
 
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
+
+
+from django.core.mail import send_mail
 
 # Create your views here.
 from .models import *
@@ -53,7 +60,7 @@ def loginPage(request):
 
 def logoutUser(request):
 	logout(request)
-	return redirect('sign')
+	return redirect('main')
 
 def main(request):
     return render(request,"myapp/Main.html")
@@ -65,9 +72,31 @@ def about(request):
     return render(request, "myapp/course.html")
 
 def contacts(request):
-    return render(request, 'myapp/contacts.html')
+    # render function takes argument  - request
+    # and return HTML as response
+    return render(request, "myapp/contacts.html")
+
+def send_gmail(request):
+    if request.method=="POST":
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject')
+        message=request.POST.get('message')
+        print(name, email, subject, message)
+
+        send_mail(
+            subject,
+            message,
+            email,
+            ['CRentalHelp@gmail.com'],
+            fail_silently=False,
+        )
+
+        return HttpResponseRedirect(('/contacts'))
+    else:
+        return HttpResponse('Invalid request')
 
 
-@login_required(login_url='login')
+@login_required(login_url='sign')
 def catalog(request):
     return render(request, 'myapp/catalog.html')

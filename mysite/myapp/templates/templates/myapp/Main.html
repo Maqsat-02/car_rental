@@ -1,0 +1,86 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative">
+      <h1>Trusted</h1>
+      <h1>by 5 Million</h1>
+      <h1>Customers</h1>
+      <h1>& Counting</h1>
+      <h2>Start your travel planning here!</h2>
+      <a href="catalog.html" class="btn-get-started scrollto">Our cars</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Book Now ======= -->
+    <section class="book-now">
+      <div class="container">
+        <h2>Book Now</h2> <br>
+        <form>
+          <div class="form-row">
+              <input type="text" class="form-control" placeholder="Place"><br>
+           </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Day from"><br>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Day to"><br>
+           <div class="text-center">
+              <button type="button" class="btn btn-dark"><a href="catalog.html" style="color: white;">Search</a></button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+       <div class="why-us">
+          <strong>WHY CHOOSE US?</strong>
+       </div>
+        <div class="row">
+
+          <div class="col-lg-4" >
+            <div class="box">
+              <img src="{% static 'myapp/assets/img/icons8-steering-wheel-96.png' %}" alt="">
+              <h4>New cars</h4>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box">
+              <img src="{% static 'myapp/assets/img/icons8-ok-500.png' %}" alt="" width="96px">
+              <h4>Great Service</h4>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0" >
+            <div class="box">
+              <img src="{% static 'myapp/assets/img/icons8-home-500.png' %}" alt="" width="96px">
+              <h4>Insurance</h4>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+ </main>
+  <!-- ======= Footer ======= -->
+  
+
+  <!-- Vendor JS Files -->
+<!--  <script src="assets/vendor/aos/aos.js"></script>-->
+<!--  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+<!--  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>-->
+<!--  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>-->
+<!--  <script src="assets/vendor/php-email-form/validate.js"></script>-->
+<!--  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>-->
+
+  <!-- Template Main JS File -->
+  {% endblock content %}
