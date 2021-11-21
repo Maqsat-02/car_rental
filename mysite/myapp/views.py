@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 
 
 from django.core.mail import send_mail
+from django.shortcuts import render,get_object_or_404
 
 # Create your views here.
 from .models import *
@@ -75,7 +76,10 @@ def contacts(request):
     # render function takes argument  - request
     # and return HTML as response
     return render(request, "myapp/contacts.html")
-
+def contacts_res(request):
+    # render function takes argument  - request
+    # and return HTML as response
+    return render(request, "myapp/contact_result.html")
 def send_gmail(request):
     if request.method=="POST":
         name=request.POST.get('name')
@@ -92,11 +96,25 @@ def send_gmail(request):
             fail_silently=False,
         )
 
-        return HttpResponseRedirect(('/contacts'))
+        return HttpResponseRedirect(('/contact_result'))
     else:
         return HttpResponse('Invalid request')
 
 
 @login_required(login_url='sign')
 def catalog(request):
-    return render(request, 'myapp/catalog.html')
+    vehicles = Vehicle.objects.all
+    context = {
+
+        'vehicles': vehicles
+    }
+
+    return render(request, 'myapp/catalog.html',context)
+
+def vehicle_details(request, pk):
+    vehicle = get_object_or_404(Vehicle, pk = pk)
+    # vehicle = Vehicle.objects.get(id=pk)
+    context = {
+        'vehicle': vehicle
+    }
+    return render(request, 'myapp/details.html', context)

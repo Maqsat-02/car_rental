@@ -1,0 +1,40 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  
+
+  <title>Contact</title>
+ 
+  <link href="{% static 'myapp/assets/css/contact.css' %}" rel="stylesheet">
+
+</head>
+
+
+
+
+
+
+  <main id="main">
+
+   <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        
+        <br><br>
+        <center>
+          <h2>Thanks {{name}}!</h2>
+          <p>We received your email and will respond shortly...</p>
+        </center>
+        <br><br>  
+
+        <a href="{% url 'contacts' %}"><button class="btn btn-dark">Back to contacts</button></a>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+ 
+
+{% endblock content %}

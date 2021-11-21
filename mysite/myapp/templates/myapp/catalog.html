@@ -10,221 +10,31 @@
   <!-- =======Catalog======== -->
    <div class="container mb-5 mt-5">
      <div class="row">
-       <!--Car #1-->
+      {% for vehicle in vehicles %}
+       <!--Car #i-->
        <div class="col-md-4 mt-5">
-         <div class="card mt-3">
+         <div class="card mb-3">
            <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/photo-1552519507-da3b142c6e3d.jfif'%}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Chevrolet Camaro</h5>
-             <div class="mt-3" info>
+            <img src="/{{vehicle.image}}"  alt="{{vehicle.name}}" class="rounded img-fluid" width="300" height="350" >
+
+             <div class="mt-auto" info>
+              <h5>{{vehicle.company.name}} {{vehicle.model}}</h5>
                <span class="text1 d-block">
-                 50$/hour | 150$/day
+                {{vehicle.per_day}} $/day
                </span>
              </div>
+             <a href="{% url 'vehicle_detail' vehicle.id %}" class="btn btn-primary">
+              View Details</a>
            </div>
-           <div class="p-3 shoe text-center text-white">
+           
+           <div class="p-auto shoe text-center text-white">
              <button type="button" class="btn btn-dark">Book Now</button>
            </div>
          </div>
-       </div><!--Car #1 End here--->
-
-       <!--Car #2-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/pexels-kelson-downes-1149137.jpg' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Toyota Tundra</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #2 End here--->
-
-       <!--Car #3-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/2370.jpg' %}" alt="lg1" class="rounded img-fluid" width="267px">
-             <h5>Ford Focus</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 60$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #3 End here--->
-
-       <!--Car #4-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/11BC3.jpg' %}" alt="lg1" class="rounded img-fluid" width="267px">
-             <h5>Hyundai Elantra</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #4 End here--->
-
-       <!--Car #5-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/Hyundai_Grandeur__191643110f.jpg' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Hyundai Grandeur</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #5 End here--->
-
-       <!--Car #6-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/thumb_125867_dc_car_gallery_new_slider.png.png' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Toyota RAV4</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #6 End here--->
-
-       <!--Car #7-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/58ce4c5c7803557405e27b8b6e0043af6a28f85b.jpg' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Toyota Camry</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #7 End here--->
-
-       <!--Car #8-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/2021-rolls-royce-ghost-extended.jpg' %}" alt="lg1" class="rounded img-fluid" width="354px">
-             <h5>Rolls-Royce Ghost</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #8 End here--->
-
-       <!--Car #9-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/front-left-side-47.webp' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Kia Seltos</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>              
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #9 End here--->
-
-       <!--Car #10-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/mercedes-amg-e-63-2021-thumb-740x492.jpg' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>Mercedes-Benz E class</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>  
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #10 End here--->
-
-       <!--Car #11-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/mercedes-benz-g63-amg-new.jpg' %}" alt="lg1" class="rounded img-fluid" width="319px">
-             <h5>Mercedes-Benz G class</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #11 End here--->
-
-       <!--Car #12-->
-       <div class="col-md-4 mt-5">
-         <div class="card mt-3">
-           <div class="product-1 align-items-center p-2 text-center">
-             <img src="{% static 'myapp/assets/img/f3d8f0c4abe23f9689387236de35dd2970181289.jpg' %}" alt="lg1" class="rounded img-fluid" width="300px">
-             <h5>BMW X5</h5>
-             <div class="mt-3" info>
-               <span class="text1 d-block">
-                 50$/hour | 150$/day
-               </span>
-             </div>
-           </div>
-           <div class="p-3 shoe text-center text-white">
-             <button type="button" class="btn btn-dark">Book Now</button>
-           </div>
-         </div>
-       </div><!--Car #12 End here--->
+       </div><!--Car #i End here--->
+       {% endfor %}
+      
+       
      </div>  
    </div>
    {% endblock content %}

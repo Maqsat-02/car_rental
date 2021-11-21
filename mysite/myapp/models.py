@@ -24,11 +24,14 @@ class Company(models.Model):
 
 
 class Vehicle(models.Model):
-    name = models.CharField(max_length=200)
     model = models.CharField(max_length=250)
     year = models.CharField(max_length=10)
     mileage = models.BigIntegerField()
-    image = models.FilePathField(path="/static/myapp/img")
+    number_pass = models.IntegerField()
+    per_day = models.IntegerField()
+    stereo = models.CharField(max_length=255)
+    transmission = models.CharField(max_length=20)
+    image = models.ImageField()
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
 
 
