@@ -3,8 +3,10 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
-from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime, timedelta
+from django.contrib.auth import login as auth_login, authenticate, logout as auth_logout
 
+from .forms import RegistrationForm, LoginForm
 from django.urls import reverse
 
 from django.contrib.auth import authenticate, login, logout
@@ -19,45 +21,66 @@ from django.shortcuts import render,get_object_or_404
 
 # Create your views here.
 from .models import *
-from .forms import  CreateUserForm
+
 # from .filters import OrderFilter
+def register(request, *args, **kwargs):
+    user = request.user
+    if user.is_authenticated:
+        return HttpResponse(f'You already authenticated as {user.email}')
 
-def registerPage(request):
-    if request.user.is_authenticated:
+    context = {
+        
+    }
+
+    if request.POST:
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email').lower()
+            raw_password = form.cleaned_data.get('password1')
+            account = authenticate(email=email, password=raw_password)
+            auth_login(request, account)
+            destination = get_redirect_if_exists(request)
+            if destination:
+                return redirect(destination)
+            return redirect('sign')
+        else:
+            context['registration_form'] = form
+
+    return render(request, 'myapp/registration.html', context)
+
+def get_redirect_if_exists(request):
+    redirect = None
+    if request.GET:
+        if request.GET.get('next'):
+            redirect = str(request.GET.get("next"))
+    return redirect
+
+def login(request, *args, **kwargs):
+    context = {
+       
+    }
+
+    user = request.user
+    if user.is_authenticated:
         return redirect('main')
-	
-    else:
-        form = CreateUserForm()
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                customer = form.cleaned_data.get('username')
-                messages.success(request, 'Account was created for ' + customer)
-                return redirect('sign')
-			
+    if request.POST:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user:
+                auth_login(request, user)
+                destination = get_redirect_if_exists(request)
+                if destination:
+                    return redirect(destination)
+                return redirect('main')
+            else:
+                context['login_form'] = form
 
-    context = {'form':form}
-    return render (request, 'myapp/registration.html', context)
+    return render(request, 'myapp/sign.html', context)
 
-def loginPage(request):
-	if request.user.is_authenticated:
-		return redirect('main')
-	else:
-		if request.method == 'POST':
-			username = request.POST.get('username')
-			password =request.POST.get('password')
-
-			user = authenticate(request, username=username, password=password)
-
-			if user is not None:
-				login(request, user)
-				return redirect('main')
-			else:
-				messages.info(request, 'Username OR password is incorrect')
-
-		context = {}
-		return render(request, 'myapp/sign.html', context)
 
 def logoutUser(request):
 	logout(request)
@@ -101,11 +124,12 @@ def send_gmail(request):
         return HttpResponse('Invalid request')
 
 
-@login_required(login_url='sign')
+
 def catalog(request):
     vehicles = Vehicle.objects.all
+    user = User.objects.all
     context = {
-
+        'user': user,
         'vehicles': vehicles
     }
 
@@ -118,3 +142,13 @@ def vehicle_details(request, pk):
         'vehicle': vehicle
     }
     return render(request, 'myapp/details.html', context)
+
+def book_vehicle(request,**kwargs):
+    vehicle = get_object_or_404(Vehicle, pk = kwargs.get('pk_v'))
+    user = get_object_or_404(User, pk = kwargs.get('pk_u'))
+    rental = Rental.objects.create(date_out=datetime.now(),date_return=datetime.now() + timedelta(hours=24),day_cost=vehicle.per_day,vehicle=vehicle,Customer=user)
+    rental.save()
+    context = {
+        'rental': rental
+    }
+    return render(request,'myapp/book.html',context)

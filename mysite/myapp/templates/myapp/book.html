@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-4 pt-5 ms-auto">
+    <div class="card-body " style=" font-weight: bold;">
+      <h3 class="card-title font-weight-bold">Vehicle Characteristics</h3>
+      <br>
+      <h5>Model: {{rental.vehicle.company.name}} {{ rental.vehicle.model }}</h5>
+    <br>
+    <h5>Renter: {{ rental.Customer.first_name rental.Customer.last_name }}</h5>
+    <br>
+    <h5>Mileage: {{ rental.vehicle.mileage }}</h5>
+    <br>
+    <h5>Vehicle cost per day: {{ rental.vehicle.per_day }} $</h5>
+    </div>
+  </div>
+{% endblock %}

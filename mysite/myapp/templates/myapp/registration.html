@@ -27,30 +27,43 @@
   
                 <h2 class="fw-bold mb-3 text-uppercase">Registration</h2>
                <p class="text-white-50 mb-5">Fill in, please </p>
-            <form method="POST" action="">
-						{% csrf_token %}
-						<div class="input-group form-outline form-white mb-4">
+			   <form method="post" id="registration-form">
+				{% csrf_token %}
+				<div class="mb-3">
+					<label for="firstName" class="form-label fs-5"> </label>
+					<input class="form-control" type="text" name="first_name" id="firstName" required>
+				</div>
+				<div class="mb-3">
+					<label for="lastName" class="form-label fs-5"> </label>
+					<input class="form-control" type="text" name="last_name" id="lastName" required>
+				</div>
+				<div class="mb-3">
+					<label for="registration-email" class="form-label fs-5"> </label>
+					<input class="form-control" type="email" name="email" id="registration-email"
+						   placeholder="example@mail.ru" required>
+				</div>
+				<div class="mb-3">
+					<label for="registration-password1" class="form-label fs-5">  </label>
+					<input class="form-control" type="password" name="password1"
+						   id="registration-password1" required>
+				</div>
+				<div class="mb-3">
+					<label for="registration-password2" class="form-label fs-5">  </label>
+					<input class="form-control" type="password" name="password2"
+						   id="registration-password2" required>
+				</div>
 
-							{{form.username}}
-						</div>
-<!--                       <div class="input-group form-outline form-white mb-4">-->
-
-<!--							{{form.surname}}-->
-<!--						</div>-->
-						<div class="input-group form-outline form-white mb-4">
-
-							{{form.email}}
-						</div>
-						<div class="input-group form-outline form-white mb-4">
-
-							{{form.password1}}
-						</div>
-						<div class="input-group form-outline form-white mb-4">
-
-							{{form.password2}}
-						</div>
-
-
+				{% for field in registration_form %}
+				<p>
+				{% for error in field.errors %}
+				<p style="color: red">{{ error }}</p>
+				{% endfor %}
+				{% endfor %}
+				{% if registration_form.non_field_errors %}
+				<div style="color: red">
+					<p>{{ registration_form.non_field_errors }}</p>
+				</div>
+				{% endif %}
 
 				   		<div class="d-flex justify-content-center mt-3 login_container">
 				 			<input class="btn btn-outline-light btn-lg px-5" type="submit" value="Register Account">
@@ -67,10 +80,11 @@
 
  <script>
      var form_fields = document.getElementsByTagName('input')
-		form_fields[1].placeholder='Username';
-		form_fields[2].placeholder='Email';
-		form_fields[3].placeholder='Enter password';
-		form_fields[4].placeholder='Re-enter Password';
+		form_fields[1].placeholder='First name';
+		form_fields[2].placeholder='Last name';
+		form_fields[3].placeholder='Email';
+		form_fields[4].placeholder='Enter password';
+		form_fields[5].placeholder='Re-enter Password';
 
 
 		for (var field in form_fields){

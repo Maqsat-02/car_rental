@@ -10,25 +10,7 @@
 </head>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-
-        <h1 class="logo"><a href="{% url 'main' %}">CRental</a></h1>
-        <nav id="navbar" class="navbar">
-          <ul>
-              <li><a class="nav-link scrollto active" href="{% url 'main' %}">HOME</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'catalog' %}">CATALOG</a></li>
-              <li><a class="nav-link scrollto"  href="{% url 'about' %}">ABOUT</a></li>
-                <li><a class="nav-link scrollto " href="{% url 'contacts' %}">CONTACT US</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'sign' %}">SIGN IN</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'registration' %}">REGISTRATION</a></li>
-          </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header>
-  
+ 
 
   <!-- =======Sign in======== -->
   <section class="vh-100 gradient-custom">
@@ -45,12 +27,12 @@
 
 
 
-                <form method="POST" action="">
+                <form method="POST" action="" id="login-form">
 						{% csrf_token %}
               <div class="form-outline form-white mb-4">
 
-                <input type="text" id="typeEmailX" class="form-control form-control-lg" name = "username" placeholder="Your email" />
-                  <label class="form-label" for="typeEmailX" >Username</label>
+                <input type="text" id="typeEmailX" class="form-control form-control-lg" name = "email" placeholder="Your email" />
+                  <label class="form-label" for="typeEmailX" >Email</label>
               </div>
 
               <div class="form-outline form-white mb-4">
@@ -58,8 +40,18 @@
                 <label class="form-label" for="typePasswordX">Password</label>
               </div>
 
-              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-
+              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="{% url 'registration'%}">Forgot password?</a></p>
+              {% for field in login_form %}
+                        <p>
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        {% endfor %}
+                        {% if login_form.non_field_errors %}
+                        <div style="color: red">
+                            <p>{{ login_form.non_field_errors }}</p>
+                        </div>
+                        {% endif %}
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign in</button>
                      </form>
             </div>
@@ -78,33 +70,4 @@
 
   <main id="main">
 
- <!-- ======= Footer ======= -->
- <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6">
-              <p>
-               8(888) 888-88-88<br>
-               Almaty, Kazakhstan<br>
-              </p>
-          </div>
-          <div class="social-links mt-3 right">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
-        </div>
-      </div>
-    </div>
-    <!--Footer--->
-    <div class="container">
-      <div class="copyright">
-        &copy; All Rights Reserved
-      </div>
-    </div>
-  </footer><!-- End Footer -->
   {% endblock content %}

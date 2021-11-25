@@ -1,29 +1,30 @@
 {% extends 'myapp/base.html' %}
 {% load static %}
 {% block content %}
+<div class="card mb-auto  col-md-12" style="background: white;text-decoration-color: black;">
+    <div class="row no-gutters">
+        <a href="{% url 'catalog' %}" style="color: black; ">Back to Catalog</a>
+      <div class="col-md-6 ms-auto">
+        <img src="/static/myapp/assets/img/{{vehicle.image}}" alt="{{ vehicle.name }}" width="100%">
+      </div>
+      <div class="col-md-4 pt-5 ms-auto">
+        <div class="card-body " style=" font-weight: bold;">
+          <h3 class="card-title font-weight-bold">Vehicle Characteristics</h3>
+          <br>
+          <h5>Model: {{vehicle.company.name}} {{ vehicle.model }}</h5>
+        <br>
+        <h5>Number passengers: {{ vehicle.number_pass }}</h5>
+        <br>
+        <h5>Transmission: {{ vehicle.transmission }}</h5>
+        <br>
+        <h5>Stereo: {{ vehicle.stereo }}</h5>
+        <br>
+        <h5>Mileage: {{ vehicle.mileage }}</h5>
+        <br>
+        <h5>Vehicle cost per day: {{ vehicle.per_day }} $</h5>
+        </div>
+      </div>
+    </div>
+  </div>>
 
-<div class="row pt-4">
-    <div class="col-md-6 ms-auto mb-4">
-        <img src="/{{vehicle.image}}" alt="{{ vehicle.name }}" width="100%">
-    </div>
-    <div class="col-md-4 text-black">
-        <h5>Model:</h5>
-        <p>{{vehicle.company.name}} {{ vehicle.model }}</p>
-        <br>
-        <h5>Number passengers:</h5>
-        <p>{{ vehicle.number_pass }}</p>
-        <br>
-        <h5>Transmission:</h5>
-        <p>{{ vehicle.transmission }}</p>
-        <br>
-        <h5>Stereo:</h5>
-        <p>{{ vehicle.stereo }}</p>
-        <br>
-        <h5>Mileage:</h5>
-        <p>{{ vehicle.mileage }}</p>
-        <br>
-        <h5>Vehicle cost per day:</h5>
-        <p>{{ vehicle.per_day }}</p>
-    </div>
-</div>
 {% endblock %}
