@@ -124,12 +124,11 @@ def send_gmail(request):
         return HttpResponse('Invalid request')
 
 
-
+@login_required(login_url='sign')
 def catalog(request):
     vehicles = Vehicle.objects.all
     user = User.objects.all
     context = {
-        'user': user,
         'vehicles': vehicles
     }
 
@@ -137,15 +136,16 @@ def catalog(request):
 
 def vehicle_details(request, pk):
     vehicle = get_object_or_404(Vehicle, pk = pk)
+    
     # vehicle = Vehicle.objects.get(id=pk)
     context = {
         'vehicle': vehicle
     }
     return render(request, 'myapp/details.html', context)
 
-def book_vehicle(request,**kwargs):
-    vehicle = get_object_or_404(Vehicle, pk = kwargs.get('pk_v'))
-    user = get_object_or_404(User, pk = kwargs.get('pk_u'))
+def book_vehicle(request,pk):
+    vehicle = get_object_or_404(Vehicle, pk = pk)
+    user = request.user
     rental = Rental.objects.create(date_out=datetime.now(),date_return=datetime.now() + timedelta(hours=24),day_cost=vehicle.per_day,vehicle=vehicle,Customer=user)
     rental.save()
     context = {

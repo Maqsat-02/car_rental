@@ -43,10 +43,10 @@
 
               {% if user.is_authenticated %}
                 <li><a class="nav-link scrollto"  href="{% url 'logout' %}">LOGOUT</a></li>
-    
               {% else %}
-                 <li><a class="nav-link scrollto" href="{% url 'sign' %}">SIGN IN</a></li>
-                 <li><a class="nav-link scrollto" href="{% url 'registration' %}">REGISTRATION</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'sign' %}">SIGN IN</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'registration' %}">REGISTRATION</a></li>
+
               {% endif %}
 
       

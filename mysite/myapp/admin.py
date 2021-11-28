@@ -31,18 +31,22 @@ class UserAccountAdmin(UserAdmin):
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    pass
+     list_display = (
+        'name', 'location')
+    
 
 
 class VehicleAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'model','year')
 
 
 
 
 
 class RentalAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'vehicle','Customer')
 
 
 class ContactAdmin(admin.ModelAdmin):

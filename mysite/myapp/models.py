@@ -74,7 +74,8 @@ class ContactForm(models.Model):
 class Company(models.Model):
     name = models.CharField(max_length=250)
     location = models.CharField(max_length=255)
-
+def __str__(self):
+    return self.name
 
 class Vehicle(models.Model):
     model = models.CharField(max_length=250)
@@ -86,7 +87,8 @@ class Vehicle(models.Model):
     transmission = models.CharField(max_length=20)
     image = models.ImageField()
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-
+def __str__(self):
+    return self.model
 
 class Rental(models.Model):
     date_out = models.DateField()
@@ -94,3 +96,5 @@ class Rental(models.Model):
     day_cost = models.IntegerField()
     vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
     Customer = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+def __str__(self):
+    return self.Customer

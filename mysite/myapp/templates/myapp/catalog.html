@@ -4,7 +4,7 @@
 <head>
   <title>Catalog</title>
 
- <!-- <link href="{% static 'myapp/assets/css/catalog.css' %}" rel="stylesheet"> -->
+ <link href="{% static 'myapp/assets/css/catalog.css' %}" rel="stylesheet">
 
 </head>
   <!-- =======Catalog======== -->
@@ -15,7 +15,7 @@
        <div class="col-md-4 mt-5">
          <div class="card mb-3">
            <div class="product-1 align-items-center p-2 text-center">
-            <img src="/static/myapp/assets/img/{{vehicle.image}}"  alt="{{vehicle.name}}" class="rounded img-fluid img-thumbnail" width="300" >
+            <img src="/static/myapp/assets/img/{{vehicle.image}}"  alt="{{vehicle.name}}" class="rounded " width="300" height="200">
 
              <div class="mt-auto" info>
               <h5>{{vehicle.company.name}} {{vehicle.model}}</h5>
@@ -25,13 +25,13 @@
              </div>
              <a href="{% url 'vehicle_detail' vehicle.id %}" class="btn btn-primary">
               View Details</a>
+              <a href="{% url 'book' vehicle.id %}" class="btn btn-primary">
+                Book</a>
            </div>
            
+           
            <div class="p-auto shoe text-center text-white">
-             <!-- {% context ={ 
-              'pk_u': user.id,
-              'pk_v': vehicle.pk
-             } %} -->
+           
             
            </div>
          </div>
