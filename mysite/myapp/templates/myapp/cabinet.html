@@ -9,7 +9,9 @@
     <br>
     <h5>Renter: {{ rental.Customer.first_name}} {{rental.Customer.last_name }}</h5>
     <br>
-    <h5>Mileage: {{ rental.vehicle.mileage }}</h5>
+    <h5>Mileage: {{ rental.vehicle.mileage }} km</h5>
+    <br>
+    <h5>Return day: {{rental.date_return}}</h5>
     <br>
     <h5>Vehicle cost per day: {{ rental.vehicle.per_day }} $</h5>
     </div>

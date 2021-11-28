@@ -151,4 +151,13 @@ def book_vehicle(request,pk):
     context = {
         'rental': rental
     }
-    return render(request,'myapp/book.html',context)
+    return render(request,'myapp/book_res.html',context)
+
+def cabinet(request):
+    user = request.user
+
+   
+    context = {
+        'rental': user.rental
+    }
+    return render(request, 'myapp/cabinet.html', context) 
