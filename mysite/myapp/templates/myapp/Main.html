@@ -2,19 +2,48 @@
 {% load static %}
 {% block content %}
 
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container position-relative">
-      <h1>Trusted</h1>
-      <h1>by 5 Million</h1>
-      <h1>Customers</h1>
-      <h1>& Counting</h1>
-      <h2>Start your travel planning here!</h2>
-      <a href="catalog.html" class="btn-get-started scrollto">Our cars</a>
+ <!-- End Hero -->
+  
+    <!-- ======= Slider ======= -->
+
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      
+      <div class="carousel-inner">
+        <!-- <section id="hero" class="d-flex align-items-center">
+          <div class="container position-relative">
+            <h1>Trusted</h1>
+            <h1>by 5 Million</h1>
+            <h1>Customers</h1>
+            <h1>& Counting</h1>
+            <h2>Start your travel planning here!</h2>
+            <a href="catalog.html" class="btn-get-started scrollto">Our cars</a>
+          </div>
+        </section> -->
+        <div class="carousel-item">
+          <img src="{% static 'myapp/assets/img/tesla-model-3.jpg' %}"  class="d-block w-100 h-70 d-flex align-items-center" alt="...">
+    
+        </div>
+        <div class="carousel-item active">
+          <img src="{% static 'myapp/assets/img/imgBackground.jpg' %}" class="d-block w-100 h-70 d-flex align-items-center" alt="...">
+        
+        </div>
+       
+        <div class="carousel-item">
+          <img src="{% static 'myapp/assets/img/58ce4c5c7803557405e27b8b6e0043af6a28f85b.jpg' %}" class="d-block w-100 h-70 d-flex align-items-center" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  </section><!-- End Hero -->
 
   <main id="main">
-
+    
     <!-- ======= Book Now ======= -->
     <section class="book-now">
       <div class="container">
@@ -69,7 +98,62 @@
         </div>
 
       </div>
-    </section><!-- End Why Us Section -->
+    </section>
+
+    <section class="bg-light">
+      <div class="container">
+        <div class="text-center">
+           <h2>Stay in The Loop</h2>
+          <p class="lead">Get the latest updates as they happen...</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+           <p class="text-muted my-4">Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Vero exercitationem voluptatibus porro, hic asperiores fuga illo
+            voluptates obcaecati deleniti veritatis sunt saepe quasi deserunt ex ipsum. Est
+            possimus, aspernatur, vitae eligendi rem odit quaerat, ipsum pariatur ratione
+            maxime delectus fuga minus accusamus dolores iusto maiores accusantium cumque
+            magnam placeat quia!</p>
+            <button class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#reg-modal">
+          Register for Updates
+          </button>
+          </div>
+        </div>
+     </div>
+    </section>
+
+
+    <div class="modal fade" id="reg-modal" tabindex="-1" aria-labelledby="modal-title"
+    aria-hidden="true">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Get the Latest Updates</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequatur
+              alias animi quos. Expedita alias praesentium tempore sequi dolor necessitatibus
+              autem veniam rerum incidunt numquam dolorem animi ullam, nesciunt nulla.</p>
+              <label for="modal-email" class="form-label">Your email address:</label>
+              <input type="email" class="form-control" id="modal-email" placeholder="e.g.
+              mario@example.com">
+           </div>
+           <div class="modal-footer">
+              <button class="btn btn-primary">Submit</button>
+           </div>
+        </div>
+     </div>
+    </div>
+    
+    
+                              
+  </div>
+        </div>
+      </div>
+    </div>
  </main>
   <!-- ======= Footer ======= -->
   
@@ -81,6 +165,13 @@
 <!--  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>-->
 <!--  <script src="assets/vendor/php-email-form/validate.js"></script>-->
 <!--  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>-->
-
+<script src="{% static 'myapp/assets/js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script>
+      const tooltips = document.querySelectorAll('.tt')
+     tooltips.forEach(t => {
+        new bootstrap. Tooltip(t)
+      })
+    </script>
   <!-- Template Main JS File -->
   {% endblock content %}
